@@ -2,9 +2,9 @@ import React from "react";
 
 const Sidebar = () =>{
     return (
-        <div className = "bg-pink-400">
+        <nav className = 'w-72 bg-purple-300'>
             Sidebar
-        </div>
+        </nav>
     )
 }
 

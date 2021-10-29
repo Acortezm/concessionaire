@@ -1,16 +1,18 @@
 import React from "react";
-import Navbar from '../componentes/Navbar';
+import SidebarAdmin from '../componentes/SidebarAdmin';
 import Footer from '../componentes/Footer';
-import Sidebar from '../componentes/Sidebar';
+import Sidebar from '../componentes/SidebarVendedor';
 
 
 const PublicLayout = ({children}) =>{
     return (
         <div className = "flex flex-col justify-between h-screen">
-            <Navbar/>
+            <SidebarAdmin/>
+            <div className = "h-full overflow-y-scroll">
             <main className = "h-full overflow-y-scroll">{children}</main>
             
-            <Footer/>         
+            <Footer/>  
+            </div>       
         </div>
     )
 }

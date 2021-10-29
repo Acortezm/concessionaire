@@ -1,19 +1,25 @@
+import AdminLogin from './pages/Login/AdminLogin';
 import Admin from './pages/Admin/Admin';
-import Vehiculos from './pages/Admin/Vehiculos';
-import Clientes from './pages/Admin/Clientes';
-import Index from './pages/Index';
-import Login from './pages/Login';
-import Registro from './pages/Registro';
+import AddProduct from './pages/Admin/AddProduct';
+import GestionUser from './pages/Admin/GestionUser';
+import Porductos from './pages/Admin/Porductos';
+import SellerLogin from './pages/Login/SellerLogin';
+import Vendedor from './pages/Vendedor/Vendedor';
+import EditVenta from './pages/Vendedor/EditVenta';
+import AddVenta from './pages/Vendedor/AddVenta';
+import Ventas from './pages/Vendedor/Ventas';
+
 import React from "react";
-import PublicLayout from './layouts/PublicLayout';
+import AdminLayout from './layouts/AdminLayout';
 import AuthLayout from './layouts/AuthLayout';
+import SellerLayout from './layouts/SellerLayout';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import PrivateLayout from './layouts/PrivateLayout';
+
 
 function App() {
   return (
@@ -21,47 +27,49 @@ function App() {
     <Router>
       <Switch>
       /* Hacer un Route por cada layout*/
-        <Route path = {['/admin', '/admin/vehiculos/', '/admin/clientes']}>
-          <PrivateLayout>
+        <Route path = {['/admin', '/admin/addproduct', '/admin/gestionUser', '/admin/porductos','/admin/addVenta', '/admin/editVenta', '/admin/venta']}>
+          <AdminLayout>
             <Switch>
-              <Route path = '/admin'>
-                <Admin/>
-              </Route>
-              <Route path = '/admin/vehiculos'>
-                <Vehiculos/>
-              </Route>
-              <Route path = '/admin/clientes'>
-                <Clientes/>
-              </Route>
+              <Route path = '/admin'><Admin/></Route>
+              <Route path = '/addproduct'><AddProduct/></Route>
+              <Route path = '/admin/gestionUser'><GestionUser/></Route>
+              <Route path = '/admin/porductos'><Porductos/></Route>
+              <Route path = '/admin/addVenta'> <AddVenta/> </Route>
+              <Route path = '/admin/editVenta'> <EditVenta/></Route>
+              <Route path = '/admin/venta'> <Ventas/> </Route>
             </Switch>
 
-          </PrivateLayout>
+          </AdminLayout>
         </Route>
 
-        <Route path = {['/login', '/registro']}>
+        <Route path = {['/vendedor','/vendedor/addVenta', '/vendedor/editVenta', '/vendedor/venta']}>
+            <SellerLayout>
+              <Switch>
+                <Route path = '/vendedor'> <Vendedor/></Route>
+                <Route path = '/vendedor/addVenta'> <AddVenta/> </Route>
+                <Route path = '/vendedor/editVenta'> <EditVenta/></Route>
+                <Route path = '/vendedor/venta'> <Ventas/> </Route>
+              </Switch>
+              </SellerLayout>       
+          </Route>
+
+        <Route path = {['/', '/adminLogin']}>
             <AuthLayout>
               <Switch>
-                <Route path = '/login'>
-                  <Login></Login>
+
+              <Route path = '/adminLogin'>
+                  <AdminLogin></AdminLogin>
                 </Route>
-                
-                <Route path = '/registro'>
-                  <Registro></Registro>
-                </Route>                
+
+                <Route path = '/'>
+                  <SellerLogin></SellerLogin>
+                </Route>
+                                              
               </Switch>
             </AuthLayout>
         </Route>
 
-        <Route path = {['/']}>
-          <PublicLayout>
-            <Switch>
-              <Route path = '/'>
-                <Index></Index>
-              </Route>
-            </Switch>
-
-          </PublicLayout>
-        </Route> 
+    
       </Switch>
     </Router>
     </div>);

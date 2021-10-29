@@ -1,11 +1,11 @@
 import React from "react";
 
-const Login = () =>{
+const Admin = () =>{
     return (
         <div>
-            Login
+            AddProduct
         </div>
     )
 }
 
-export default  Login;
+export default  Admin;

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Admin = () => {
+const BotonExtra = () => {
     return (
         <div>
-            Admin
+            
         </div>
     )
 }
 
-export default Admin;
+export default BotonExtra;

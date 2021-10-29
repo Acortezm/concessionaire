@@ -3,7 +3,7 @@ import React from 'react'
 const Vehiculos = () => {
     return (
         <div>
-            Vehiculos
+            Gestion Usuario
         </div>
     )
 }
