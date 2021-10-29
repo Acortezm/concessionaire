@@ -1,20 +1,19 @@
 import React from "react";
 import SidebarAdmin from '../componentes/SidebarAdmin';
 import Footer from '../componentes/Footer';
-import Sidebar from '../componentes/SidebarVendedor';
 
 
-const PublicLayout = ({children}) =>{
+const AdminLayout = ({children}) =>{
     return (
-        <div className = "flex flex-col justify-between h-screen">
-            <SidebarAdmin/>
-            <div className = "h-full overflow-y-scroll">
-            <main className = "h-full overflow-y-scroll">{children}</main>
+        <div className = 'flex w-screen h-screen'>
+            <SidebarAdmin></SidebarAdmin>
+            <main className = 'flex w-full'>
             
-            <Footer/>  
-            </div>       
+                {children}
+                </main>
+            
         </div>
     )
 }
 
-export default  PublicLayout;
+export default  AdminLayout;

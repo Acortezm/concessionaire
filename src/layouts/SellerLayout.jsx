@@ -5,7 +5,7 @@ const SellerLayout = ({children}) =>{
     return (
         <div className = 'flex w-screen h-screen'>
             <SidebarVendedor></SidebarVendedor>
-            <main className = 'flex w-full bg-purple-200'>
+            <main className = 'flex w-full'>
                 {children}
                 </main>
         </div>
