@@ -16,8 +16,7 @@ import SellerLayout from './layouts/SellerLayout';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -26,7 +25,6 @@ function App() {
   <div>
     <Router>
       <Switch>
-      /* Hacer un Route por cada layout*/
         <Route path = {['/admin', '/admin/addproduct', '/admin/gestionUser', '/admin/porductos','/admin/addVenta', '/admin/editVenta', '/admin/ventas']}>
           <AdminLayout>
             <Switch>
