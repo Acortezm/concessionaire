@@ -3,50 +3,31 @@ import React from 'react'
 const Vendedor = () => {
     return (
         <div>
-            
-        <div class="xl:w-1/2 w-11/12">
-            <h1 role="heading" tabindex="0" class="text-6xl font-bold 2xl:leading-10 leading-0 text-center text-gray-800">Touching hundreds of lives</h1>
-            <h2 role="contentinfo" tabindex="0" class="text-base leading-normal text-center text-gray-600 mt-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing</h2>
+           
+        <div className="md:flex flex-col items-center border-b pb-6 border-gray-200 ">
+            <h1  className="flex items-center md:mt-0 mt-4" tabindex="0" role="heading" aria-label="Title" className="focus:outline-none text-3xl font-bold text-gray-800"> !Independizate con el mejor servicio para Mascotas!
+            </h1>
+
+            <h2 role="contentinfo" tabindex="0" class="w-96  text-sm text-center text-gray-600 mt-5">Ellos nos hacen felices cada día por eso merecen lo mejor. Con tu ayuda distribuimos el mejor servicio de mascotas de la ciudad. Recibe ganancias vendiendo nuestros servicios, con más de 50 opciones disponibles en nuestro catálogo.</h2>
         </div>
-        <div class="2xl:px-20 lg:px-12 px-4 flex flex-wrap items-start mt-4">
-            <div class="mt-24">
-                <div class="flex items-end">
-                    <img tabindex="0" src="https://i.ibb.co/kBgtHK6/Rectangle-5.png" alt="girl with blue background" class="w-20 h-20 rounded-lg mr-6" />
-                    <img tabindex="0" src="https://i.ibb.co/9nLBtjx/Rectangle-3.png" alt="guy winking" class="w-48 h-36 rounded-lg" />
+        <div class="2xl:px-20 lg:px-12 px-4 flex justify-center items-start mt-0 ">
+            <div>
+                <div class="flex items-end m-6">
+                    <img tabindex="0" src="https://i.ibb.co/BV8FpLM/wellness-Dog.jpg" alt="cat dog" class="w-60 h-32 rounded-lg mr-2" />
+                    <img tabindex="0" src="https://i.ibb.co/prMcKJJ/Bathing-Dog.jpg" alt="two dogs" class="w-32 h-36 rounded-lg ml-4 "/>
+                    <img tabindex="0" src="https://i.ibb.co/G3DP5vp/both.jpg" class="w-48 h-48 rounded-lg m-4" />
+                
                 </div>
-                <div class="flex items-center justify-end my-6">
-                    <img tabindex="0" src="https://i.ibb.co/jRbF1KF/Rectangle-4.png" alt="guy smiling" />
-                </div>
-                <div class="flex items-start">
-                    <img tabindex="0" src="https://i.ibb.co/Sf4Q94L/Rectangle-6.png" alt="girl with bluw background" class="w-48 h-48 rounded-lg" />
-                    <img tabindex="0" src="https://i.ibb.co/fnNqJrx/Rectangle-7.png" alt="guy with glasses" class="w-20 h-20 rounded-lg ml-6 flex-shrink-0 object-cover object-fit" />
-                </div>
-            </div>
-            <div class="ml-6 mt-32">
-                <img tabindex="0" src="https://i.ibb.co/LSxy7fy/Rectangle-9.png" class="w-72 h-80 rounded-lg" alt="guy with sunglasses" />
-                <div class="flex items-start mt-6">
-                    <img tabindex="0" src="https://i.ibb.co/X8PKD3q/Rectangle-8.png" alt="girl  laughing" class="w-48 h-48 rounded-lg" />
-                    <img tabindex="0" src="https://i.ibb.co/2Yj51CY/Rectangle-13.png" alt="guy with glasses" class="w-20 h-20 rounded-lg ml-6 object-cover object-fit" />
+            
+                <div class="flex items-start m-3">
+                    <img tabindex="0" src="https://i.ibb.co/txCzmRT/Bathing-Cat.jpg" alt="girl with bluw background" class="w-48 h-48 rounded-lg m-4"/>
+                    <img tabindex="0" class="w-48 h-48 rounded-lg" src="https://i.ibb.co/RCmn9J8/cutting-Nails.jpg" alt="young girl with red hair" class="w-24 h-24 rounded-lg ml-4" />
+                    <img tabindex="0" class="w-72 h-56 rounded-lg ml-6" src="https://i.ibb.co/rKP7HSB/spaCat.jpg" alt="young girl with red hair"  class="w-48 h-48 rounded-lg m-4"/>
+                    <img tabindex="0" src="https://i.ibb.co/6r8n1m5/spaDog.jpg" alt="smart cat" class="w-2-4 h-24 rounded-lg ml-4" />
                 </div>
             </div>
-            <div class="mt-14 ml-6">
-                <div class="lg:flex">
-                    <div>
-                        <img tabindex="0" src="https://i.ibb.co/bWGVSkP/Rectangle-10.png" alt="group of friends" class="w-96 h-72 rounded-lg object-center object-fit" />
-                    </div>
-                    <div>
-                        <div class="flex ml-6">
-                            <img tabindex="0" src="https://i.ibb.co/80jvpSv/Rectangle-16.png" class="w-20 h-20 rounded-lg mt-14" alt="man" />
-                            <img tabindex="0" src="https://i.ibb.co/6PR2Y74/Rectangle-15.png" class="w-20 h-24 rounded-lg ml-6" alt="woman" />
-                        </div>
-                        <img tabindex="0" src="https://i.ibb.co/M5rvjhk/Rectangle-14.png" alt="boy with blonde hair" class="ml-6 mt-6 w-48 h-32 rounded-lg" />
-                    </div>
-                </div>
-                <div class="mt-6 flex">
-                    <img tabindex="0" class="w-48 h-48 rounded-lg" src="https://i.ibb.co/GPpMsbr/Rectangle-12.png" alt="young girl with red hair" />
-                    <img tabindex="0" class="w-72 h-56 rounded-lg ml-6" src="https://i.ibb.co/VBcgkVL/Rectangle-11.png" alt="young girl with red hair" />
-                </div>
-            </div>
+            
+
         </div>
     
         </div>

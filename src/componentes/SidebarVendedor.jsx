@@ -6,10 +6,13 @@ import BotonSecundario from "../componentes/botones/BotonSecundario";
 
 const Sidebar = () =>{
     return (
-        <nav className = 'w-72 bg-gradient-to-tl from-yellow-300 to-orange-300'>
-          <img src={logo} alt= "logo" className = "rounded-full h-40 w-40 flex items-center justify-center" />
-          <Link to = "/vendedor/ventas"><BotonPrincipal>Ventas</BotonPrincipal></Link>
-          <Link to = '/vendedor/addVenta'><BotonPrincipal>Agregar Venta</BotonPrincipal></Link>
+        <nav className = 'xl:w-2/6 w-2/6 h-full bg-gradient-to-tl from-yellow-300 to-orange-300 flex items-center flex-col fixed'>
+          <div className= 'flex-col items-center justify-center mb-0 mt-3'><img src={logo} alt= "logo" className = "rounded-lg h-36 w-36 flex items-center justify-center" />
+          <h2 className= "text-sm text-center text-gray-600 mt-5 font-bold " >PERFIL DE VENDEDOR</h2>
+          </div>
+          <div><Link to = '/vendedor'><BotonPrincipal>Inicio</BotonPrincipal></Link>
+          <Link to = '/vendedor/venta'><BotonPrincipal>Ventas</BotonPrincipal></Link>
+          <Link to = '/vendedor/addVenta'><BotonPrincipal>Agregar Venta</BotonPrincipal></Link></div>
         
           
           <div className = "absolute bottom-0">
