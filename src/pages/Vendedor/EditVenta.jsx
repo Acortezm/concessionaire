@@ -1,6 +1,10 @@
 import React from 'react'
 import BotonSecundario from "../../componentes/botones/BotonSecundario";
-const EditVenta = () => {
+
+
+const EditVenta = () => {  
+    
+
     return (
         <div className = 'absolute inset-y-0 right-32'>
             

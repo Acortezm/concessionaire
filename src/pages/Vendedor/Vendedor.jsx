@@ -1,4 +1,5 @@
 import React from 'react'
+import BotonPrincipal from "../../componentes/botones/BotonPrincipal";
 
 const Vendedor = () => {
     return (
