@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddVenta = () => {
     const form = useRef(null)
@@ -13,7 +12,6 @@ const AddVenta = () => {
             nuevaVenta[key]=value;
         });
         console.log(nuevaVenta);
-        toast.success("mensaje");
     }
 
         return (
@@ -75,9 +73,6 @@ const AddVenta = () => {
                 
                 </form>
                 </div>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={5000}/>
                 </div>
             
         )

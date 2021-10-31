@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import AddVenta from './AddVenta';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
 
 const ventasBackend = [
     {
@@ -73,10 +69,7 @@ const Ventas = () => {
                 {textBoton}</buttom> </div>
             {mostrarTabla ?  (<TablaVentas listaVentas = {ventas}/>
             ) : (<AddVenta mostrarVentas  = {setMostrarTabla} modificarListaVentas = {setVentas}/>)}
-            
-            <ToastContainer
-                position="bottom-center"
-                autoClose={3000}/>
+           
             
         </div>
     )
