@@ -12,9 +12,7 @@ const Sidebar = () =>{
           </div>
           <Link to = '/Admin'><BotonPrincipal>Inicio</BotonPrincipal></Link>
           <Link to = "/admin/ventas"><BotonPrincipal>Ventas</BotonPrincipal></Link>
-          <Link to = '/admin/addVenta'><BotonPrincipal>Agregar Venta</BotonPrincipal></Link>
           <Link to = '/admin/productos'><BotonPrincipal>Productos</BotonPrincipal></Link>
-          <Link to = '/admin/addproduct'><BotonPrincipal>Agregar Productos</BotonPrincipal></Link>
           <Link to = '/admin/gestionUser'><BotonPrincipal>Gestionar Usuarios</BotonPrincipal></Link>
         
           <Link to = '/'>

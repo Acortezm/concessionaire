@@ -11,8 +11,7 @@ const Sidebar = () =>{
           <h2 className= "text-sm text-center text-gray-600 mt-5 font-bold " >PERFIL DE VENDEDOR</h2>
           </div>
           <div><Link to = '/vendedor'><BotonPrincipal>Inicio</BotonPrincipal></Link>
-          <Link to = '/vendedor/venta'><BotonPrincipal>Ventas</BotonPrincipal></Link>
-          <Link to = '/vendedor/addVenta'><BotonPrincipal>Agregar Venta</BotonPrincipal></Link></div>
+          <Link to = '/vendedor/venta'><BotonPrincipal>Ventas</BotonPrincipal></Link></div>
         
           
           <div className = "absolute bottom-0">

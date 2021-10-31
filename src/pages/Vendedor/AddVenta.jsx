@@ -13,6 +13,7 @@ const AddVenta = () => {
             nuevaVenta[key]=value;
         });
         console.log(nuevaVenta);
+        toast.success("mensaje");
     }
 
         return (
@@ -66,7 +67,8 @@ const AddVenta = () => {
                     </div>
                               
                 <button type= "submit" 
-                className = "mt-16 flex items-center justify-center"
+                class="bg-CNaranja focus:outline-none focus:ring-2 focus:ring-offset-1 
+                focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-52 font text-white justify-center mx-2 mt-16 flex-wrap"
                 
                 >Guardar
                 </button>

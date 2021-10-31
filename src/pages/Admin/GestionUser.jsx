@@ -2,7 +2,7 @@ import React from 'react'
 
 const GestionUser = () => {
     return (
-        <div>
+        <div className = 'absolute inset-y-0 right-0'>
             
         <div class="flex w-full items-center  justify-center py-12 px-6">
             <div>

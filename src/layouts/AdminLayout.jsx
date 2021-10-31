@@ -6,7 +6,7 @@ const AdminLayout = ({children}) =>{
     return (
         <div className = 'flex w-screen h-full '>
             <SidebarAdmin className = "xl:w-1/2 w-11/12 "></SidebarAdmin>
-            <main >
+            <main>
             
                 {children}
                 </main>

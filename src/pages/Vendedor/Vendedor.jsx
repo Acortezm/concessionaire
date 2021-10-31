@@ -1,9 +1,8 @@
 import React from 'react'
-import BotonPrincipal from "../../componentes/botones/BotonPrincipal";
 
 const Vendedor = () => {
     return (
-        <div>
+        <div className = 'absolute inset-y-0 right-0'>
            
         <div className="md:flex flex-col items-center border-b pb-6 border-gray-200 ">
             <h1  className="flex items-center md:mt-0 mt-4" tabindex="0" role="heading" aria-label="Title" className="focus:outline-none text-3xl font-bold text-gray-800"> !Independizate con el mejor servicio para Mascotas!
