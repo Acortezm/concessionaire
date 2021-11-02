@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AddVenta from './AddVenta';
-
+import BotonPrincipal from '../../componentes/botones/BotonPrincipal';
 const ventasBackend = [
     {
         productNombre : "corola",
@@ -81,6 +81,8 @@ const TablaVentas = ({listaVentas}) =>{
     return(
         <div>
 <div className= "p-10">
+    <div>
+  <BotonPrincipal> Lista de Ventas </BotonPrincipal></div>
         <table>
             <thead>
                 <tr>

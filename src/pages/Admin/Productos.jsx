@@ -7,14 +7,14 @@ const productoBackend = [
         nombre : "hueso",
         ID: "1234",
         precio: "13.00",
-        cantidad: "14"
+        disponibilidad: Boolean,
     },
 
     {
         nombre : "hueso",
         ID: "1234",
         precio: "13.00",
-        cantidad: "14"
+        disponibilidad: Boolean,
     }
     
 
@@ -69,6 +69,19 @@ const Productos = () => {
 
 
 const TablaVentas = ({listaVentas}) =>{
+const [disponibilidad, setDisponibilidad] = useState(true);
+const [colorBoton, setColorBoton] = useState('green');
+
+useEffect(() => {
+    if (disponibilidad){
+        setDisponibilidad('Disponible');
+        setColorBoton('green');
+
+    }else{
+        setDisponibilidad('No disponible')
+        setColorBoton('red');
+    }
+}, [disponibilidad]);
 
     return(
         <div>
@@ -103,7 +116,7 @@ const TablaVentas = ({listaVentas}) =>{
                     </th>
                     <th class="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                         <div class="flex items-center justify-center">
-                            Cantidad
+                            Disponibilidad
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
                             </svg>
@@ -119,7 +132,12 @@ const TablaVentas = ({listaVentas}) =>{
                         <td class="p-2 border-r">{productos.nombre}</td>
                         <td class="p-2 border-r">{productos.ID}</td>
                         <td class="p-2 border-r">{productos.precio}</td>
-                        <td class="p-2 border-r">{productos.cantidad}</td>
+                        <td class="p-2 border-r"><buttom 
+            onClick = {() => [
+                setDisponibilidad(!disponibilidad)
+            ]} className= {` bg-${colorBoton}-400 focus:outline-none focus:ring-2 focus:ring-offset-1 
+            focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-52 font text-white justify-center flex-wrap`}>
+                {disponibilidad}</buttom></td>
                         <td>
                             <button className="bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
         focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center"><i class="far fa-edit"></i></button>

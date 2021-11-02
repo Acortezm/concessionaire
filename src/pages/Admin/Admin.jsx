@@ -9,7 +9,7 @@ const Admin = () => {
 
             <h2 role="contentinfo" tabindex="0" class="w-96  text-sm text-center text-gray-600 mt-5">Sabemos que ellos nos hacen felices cada día y por eso merecen lo mejor. Con tu administración hemos llevado este sueño al mejor servicio de mascotas de la ciudad. Recibe bonos extra por llevar a tu equipo de ventas al primer puesto en ventas a final de mes.</h2>
         </div>
-        <div class="2xl:px-20 lg:px-12 px-4 flex justify-center items-start mt-0 ">
+        <div className="2xl:px-20 lg:px-12 px-4 flex justify-center items-start mt-0 ">
             <div>
                 <div class="flex items-end m-6">
                     <img tabindex="0" src="https://i.ibb.co/1r5KWnQ/kissing-Dog.jpg" alt="cat dog" class="w-60 h-32 rounded-lg mr-2" />
