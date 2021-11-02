@@ -16,6 +16,7 @@ const AddProduct = () =>{
 
         return (
             
+        
                 <div >
                 
                 <div tabindex="0" aria-label="form" class="focus:outline-none w-full bg-white p-10">
@@ -47,19 +48,19 @@ const AddProduct = () =>{
                         <div className="flex flex-col">
                             <label htmlfor="cxNombre"  className="mb-3 text-sm leading-none text-gray-800">Precio</label>
                             <input 
-                            name = "cxNombre" 
+                            name = "precio" 
                             className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                             type = "text"
-                            placeholder = "Laura"
+                            placeholder = "0.00"
                             required/>
                              </div>
                         <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
                             <label htmlfor="cxID" className="mb-3 text-sm leading-none text-gray-800">Cantidad</label>
                             <input 
-                            name = "cxID" 
+                            name = "cantidad" 
                             className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                             type = "number"
-                            placeholder = "123456789"
+                            placeholder = "10"
                             required />
                             </div>
                     </div>

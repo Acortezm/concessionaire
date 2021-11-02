@@ -22,7 +22,7 @@ const productoBackend = [
 
 const Productos = () => {
     const [mostrarTabla, setMostrarTabla] = useState(true);
-    const [textBoton, setTextBoton] = useState('Agregar Venta');
+    const [textBoton, setTextBoton] = useState('Agregar Producto');
     const [productos, setProductos] = useState([]);
     const [colorBoton, setColorBoton] = useState('blue');
 
@@ -35,11 +35,11 @@ const Productos = () => {
 
     useEffect(() => {
         if (mostrarTabla){
-            setTextBoton('Agregar Venta');
+            setTextBoton('Agregar Producto');
             setColorBoton('blue');
 
         }else{
-            setTextBoton('Historil de productos')
+            setTextBoton('Historial de productos')
             setColorBoton('blue');
         }
     }, [mostrarTabla]);
@@ -47,7 +47,7 @@ const Productos = () => {
     return (
         <div className = 'absolute inset-y-0 right-32'> 
             <div className="border-b pb-6 border-blue-400 ">
-                    <h1  className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Ventas            
+                    <h1  className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Productos            
                     </h1></div>
 
             <div className="flex items-start justify-between mx-2 mt-16">
@@ -73,9 +73,6 @@ const TablaVentas = ({listaVentas}) =>{
     return(
         <div>
 <div className= "p-10">
-<div className= "border rounded-lg p-2 w-80 mb-6">
-                    <input className = "w-64 p-1 rounded-lg" placeholder="Buscar un usuario"/>
-                    <button><i className="fas fa-search"></i></button>
             </div>
         <table>
             <thead>
@@ -124,11 +121,12 @@ const TablaVentas = ({listaVentas}) =>{
                         <td class="p-2 border-r">{productos.precio}</td>
                         <td class="p-2 border-r">{productos.cantidad}</td>
                         <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-label="edit icon" role="button" tabindex="0" class="focus:outline-none icon icon-tabler icon-tabler-pencil" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
-                                    <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
-                                </svg>
+                            <button className="bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
+        focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center"><i class="far fa-edit"></i></button>
+                        </td>
+                        <td>
+                            <button className="bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
+        focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center" ><i class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>)
                 })}
@@ -140,7 +138,7 @@ const TablaVentas = ({listaVentas}) =>{
     </div>
        
     
-        </div>
+    
     )
 };
 
