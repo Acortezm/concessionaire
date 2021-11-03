@@ -3,9 +3,12 @@ import Admin from './pages/Admin/Admin';
 import AddProduct from './pages/Admin/AddProduct';
 import GestionUser from './pages/Admin/GestionUser';
 import Productos from './pages/Admin/Productos';
+import AddVentaAdmin from './pages/Admin/AddVentaAdmin';
+import VentasAdmin from './pages/Admin/VentasAdmin';
+import AddUser from './pages/Admin/AddUser';
+
 import SellerLogin from './pages/Login/SellerLogin';
 import Vendedor from './pages/Vendedor/Vendedor';
-import EditVenta from './pages/Vendedor/EditVenta';
 import AddVenta from './pages/Vendedor/AddVenta';
 import Ventas from './pages/Vendedor/Ventas';
 
@@ -25,15 +28,15 @@ function App() {
   <div>
     <Router>
       <Switch>
-        <Route path = {['/admin', '/admin/addproduct', '/admin/gestionUser', '/admin/porductos','/admin/addVenta', '/admin/editVenta', '/admin/ventas']}>
+        <Route path = {['/admin', '/admin/addproduct', '/admin/gestionUser', '/admin/porductos','/admin/addVentaAdmin', '/admin/ventasAdmin', '/admin/addUser']}>
           <AdminLayout>
             <Switch>
               <Route path = '/admin/addproduct'><AddProduct/></Route>
               <Route path = '/admin/gestionUser'><GestionUser/></Route>
               <Route path = '/admin/productos'><Productos/></Route>
-              <Route path = '/admin/addVenta'> <AddVenta/> </Route>
-              <Route path = '/admin/editVenta'> <EditVenta/></Route>
-              <Route path = '/admin/ventas'> <Ventas/> </Route>
+              <Route path = '/admin/addVentaAdmin'> <AddVentaAdmin/> </Route>
+              <Route path = '/admin/ventasAdmin'> <VentasAdmin/> </Route>
+              <Route path = '/admin/addUser'> <AddUser/> </Route>
               <Route path = '/admin'><Admin/></Route>
             </Switch>
 
@@ -44,7 +47,6 @@ function App() {
             <SellerLayout>
               <Switch>
                 <Route path = '/vendedor/addVenta'> <AddVenta/> </Route>
-                <Route path = '/vendedor/editVenta'> <EditVenta/></Route>
                 <Route path = '/vendedor/venta'> <Ventas/> </Route>
                 <Route path = '/vendedor'> <Vendedor/></Route>
               </Switch>

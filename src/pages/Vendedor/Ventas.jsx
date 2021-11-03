@@ -1,88 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import AddVenta from './AddVenta';
-import BotonPrincipal from '../../componentes/botones/BotonPrincipal';
-const ventasBackend = [
-    {
-        productNombre : "corola",
-        productID: "totoyota",
-        cxNombre: "Laura",
-        cxID: "1234"
-    },
-    {
-        productNombre : "corola",
-        productID: "totoyota",
-        cxNombre: "Laura",
-        cxID: "1234"
-    },
-    {
-        productNombre : "corola",
-        productID: "totoyota",
-        cxNombre: "Laura",
-        cxID: "1234"
-    },
-    {
-        productNombre : "corola",
-        productID: "totoyota",
-        cxNombre: "Laura",
-        cxID: "1234"
-    },
-]
+import React from 'react'
+import BotonExtra from '../../componentes/botones/BotonExtra';
+import { Link } from 'react-router-dom';
 
 const Ventas = () => {
-    const [mostrarTabla, setMostrarTabla] = useState(true);
-    const [textBoton, setTextBoton] = useState('Agregar Venta');
-    const [ventas, setVentas] = useState([]);
-    const [colorBoton, setColorBoton] = useState('blue');
-
-
-    useEffect(() => {
-            setVentas(ventasBackend);
-    }, []);
-
-
-
-    useEffect(() => {
-        if (mostrarTabla){
-            setTextBoton('Agregar Venta');
-            setColorBoton('blue');
-
-        }else{
-            setTextBoton('Mostrar historial de ventas')
-            setColorBoton('blue');
-        }
-    }, [mostrarTabla]);
-
+const ventasBackend = [
+        {
+            productNombre : "corola",
+            productID: "totoyota",
+            cxNombre: "Laura",
+            cxID: "1234"
+        },
+        {
+            productNombre : "corola",
+            productID: "totoyota",
+            cxNombre: "Laura",
+            cxID: "1234"
+        },
+        {
+            productNombre : "corola",
+            productID: "totoyota",
+            cxNombre: "Laura",
+            cxID: "1234"
+        },
+        {
+            productNombre : "corola",
+            productID: "totoyota",
+            cxNombre: "Laura",
+            cxID: "1234"
+        },
+    ]
+    
     return (
         <div className = 'absolute inset-y-0 right-32'> 
             <div className="border-b pb-6 border-blue-400 ">
                     <h1  className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Ventas            
                     </h1></div>
 
-            <div className="flex items-start justify-between mx-2 mt-16">
-                    
-                
-            <buttom 
-            onClick = {() => [
-                setMostrarTabla(!mostrarTabla)
-            ]} className= {` bg-${colorBoton}-400 focus:outline-none focus:ring-2 focus:ring-offset-1 
-            focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-52 font text-white justify-center flex-wrap`}>
-                {textBoton}</buttom> </div>
-            {mostrarTabla ?  (<TablaVentas listaVentas = {ventas}/>
-            ) : (<AddVenta mostrarVentas  = {setMostrarTabla} modificarListaVentas = {setVentas}/>)}
-           
-            
-        </div>
-    )
-}
+            <Link to= "/vendedor/addVenta"><div className="flex items-start justify-between mx-2 mt-16"> <BotonExtra> Agregar Venta</BotonExtra></div></Link>
 
-
-const TablaVentas = ({listaVentas}) =>{
-
-    return(
-        <div>
-<div className= "p-10">
-    <div>
-  <BotonPrincipal> Lista de Ventas </BotonPrincipal></div>
+            <div className= "p-10">
         <table>
             <thead>
                 <tr>
@@ -122,7 +78,7 @@ const TablaVentas = ({listaVentas}) =>{
             </thead>
             <tbody>               
 
-                {listaVentas.map((ventas) => {
+                {ventasBackend.map((ventas) => {
                     return(
                         <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
                         <td class="p-2 border-r">{ventas.cxID}</td>
@@ -146,12 +102,9 @@ const TablaVentas = ({listaVentas}) =>{
             </tbody>
         </table>
     </div>
-       
-    
-        </div>
+    </div>
     )
-};
-
+}
 
 
 

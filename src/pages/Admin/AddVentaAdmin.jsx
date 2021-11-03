@@ -14,7 +14,7 @@ const AddVenta = () => {
                     </h1>
                     </div>
                     <div className= "mt-10 ml-0">
-                   <Link to = "/vendedor/venta"> < BotonExtra > Historial de Ventas </BotonExtra></Link></div>
+                   <Link to = '/admin/ventasAdmin'> < BotonExtra > Historial de Ventas </BotonExtra></Link></div>
             
             <div tabindex="0" aria-label="form" class="focus:outline-none w-full bg-white p-10">
                 

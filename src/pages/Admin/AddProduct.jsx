@@ -1,28 +1,26 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React from 'react'
+import BotonExtra from '../../componentes/botones/BotonExtra';
+import BotonSecundario from '../../componentes/botones/BotonSecundario';
+import { Link } from 'react-router-dom';
 
 
 const AddProduct = () =>{
-    const form = useRef(null)
-        
-    const submitForm = (e) =>{
-        const fd = new FormData(form.current)
-
-        const nuevaVenta = {};
-        fd.forEach((value, key) => {
-            nuevaVenta[key]=value;
-        });
-        console.log(nuevaVenta);
-    }
 
         return (
             
         
-                <div >
+                <div className = 'absolute inset-y-0 right-56 ml-12'> 
+                <div className="border-b pb-6 border-blue-400 mt-16">
+                        <h1  className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Productos            
+                        </h1>
+                        </div>
+                        <div className= "mt-10 ml-0">
+                       <Link to = "/Admin/productos"> < BotonExtra > Historial de Productos </BotonExtra></Link></div>
                 
                 <div tabindex="0" aria-label="form" class="focus:outline-none w-full bg-white p-10">
                     
                     <p    tabindex="0" className=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4">Ingrese los datos del nuevo producto <br />Luego haga click en Guardar</p>
-                    <form onSubmit = {submitForm}>
+                    <form>
                     <div className="mt-4 md:flex items-center">
                      <div className="flex flex-col">
                             <label htmlfor= "productNombre" className="mb-3 text-sm leading-none text-gray-800">Nombre del Producto</label>
@@ -64,13 +62,9 @@ const AddProduct = () =>{
                             required />
                             </div>
                     </div>
-                              
-                <button type= "submit" 
-                class="bg-CNaranja focus:outline-none focus:ring-2 focus:ring-offset-1 
-                focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-52 font text-white justify-center mx-2 mt-16 flex-wrap"
-                
-                >Guardar
-                </button>
+                <div className= "mt-10">     
+                <BotonSecundario>Guardar
+                </BotonSecundario></div>
                 </form>
                 </div>
                 </div>

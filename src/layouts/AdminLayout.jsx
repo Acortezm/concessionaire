@@ -11,6 +11,7 @@ const AdminLayout = ({children}) =>{
                 {children}
                 </main>
             
+            
         </div>
     )
 }

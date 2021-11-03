@@ -11,7 +11,7 @@ const Sidebar = () =>{
           <h2 className= "text-sm text-center text-gray-600 mt-5 font-bold " >PERFIL ADMINISTRATIVO</h2>
           </div>
           <Link to = '/Admin'><BotonPrincipal>Inicio</BotonPrincipal></Link>
-          <Link to = "/admin/ventas"><BotonPrincipal>Ventas</BotonPrincipal></Link>
+          <Link to = "/admin/ventasAdmin"><BotonPrincipal>Ventas</BotonPrincipal></Link>
           <Link to = '/admin/productos'><BotonPrincipal>Productos</BotonPrincipal></Link>
           <Link to = '/admin/gestionUser'><BotonPrincipal>Gestionar Usuarios</BotonPrincipal></Link>
         
