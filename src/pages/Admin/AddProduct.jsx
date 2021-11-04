@@ -2,6 +2,7 @@ import BotonExtra from '../../componentes/botones/BotonExtra';
 import BotonSecundario from '../../componentes/botones/BotonSecundario';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react'
+import Axios from 'axios'
 <link
     href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
     rel="stylesheet"
@@ -20,7 +21,14 @@ const AddProduct = () => {
     //Funcion para agregar a la DB
     const add_product_to_db = () => {
         console.log(codigo_add + nombre_add + precio_unidad_add + estado_add)
-        
+        //1. Peticion POST a la DB
+        Axios.post('http://localhost:3001/api/v1/produc/add',{
+            codigo: codigo_add,
+            nombre: nombre_add,
+            precio_unidad: precio_unidad_add,
+            estado: estado_add
+        })
+
     }
 
     return (
