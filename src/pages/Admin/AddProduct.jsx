@@ -1,13 +1,8 @@
 import BotonExtra from '../../componentes/botones/BotonExtra';
 import BotonSecundario from '../../componentes/botones/BotonSecundario';
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Axios from 'axios'
-<link
-    href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
-    rel="stylesheet"
-/>
-
 
 
 const AddProduct = () => {
@@ -16,19 +11,19 @@ const AddProduct = () => {
     const [codigo_add, set_codigo_add] = useState("");
     const [nombre_add, set_nombre_add] = useState("");
     const [precio_unidad_add, set_precio_unidad_add] = useState(0);
-    const [estado_add, set_estado_add] = useState("true");
+    const [estado_add, set_estado_add] = useState("Disponible");
 
     //Funcion para agregar a la DB
     const add_product_to_db = () => {
+
         console.log(codigo_add + nombre_add + precio_unidad_add + estado_add)
         //1. Peticion POST a la DB
-        Axios.post('http://localhost:3001/api/v1/produc/add',{
+        Axios.post('http://localhost:3001/api/v1/product/add', {
             codigo: codigo_add,
             nombre: nombre_add,
             precio_unidad: precio_unidad_add,
             estado: estado_add
         })
-
     }
 
     return (
@@ -42,7 +37,7 @@ const AddProduct = () => {
             <div className="mt-10 ml-0">
                 <Link to="/Admin/productos"> < BotonExtra > Historial de Productos </BotonExtra></Link></div>
 
-            <div tabindex="0" aria-label="form" class="focus:outline-none w-full bg-white p-10">
+            <div tabindex="0" aria-label="form" className="focus:outline-none w-full bg-white p-10">
 
                 <p tabindex="0" className=" focus:outline-none text-sm font-light leading-tight text-gray-600 mt-4">Ingrese los datos del nuevo producto <br />Luego haga click en Guardar</p>
                 <form>
@@ -59,6 +54,7 @@ const AddProduct = () => {
                                 onChange={(e) => {
                                     set_nombre_add(e.target.value)
                                 }
+
                                 }
                             />
 
@@ -68,7 +64,7 @@ const AddProduct = () => {
                             <input
                                 name="productID"
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
-                                type="string"
+                                type="text"
                                 placeholder="1234567"
                                 required
                                 //Evento cambio de estado para el input
@@ -95,42 +91,43 @@ const AddProduct = () => {
                             />
                         </div>
                         <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
-                            <div class="mt-4">
-                                <span class="text-gray-700">Estado</span>
-                                <div class="mt-2">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" class="form-radio" name="estado" value="Disponible" id='0'
-                                        onChange={(e) => {
-                                            set_estado_add("Disponible")
-                                        }
-                                        }
+                            <div className="mt-4">
+                                <span className="text-gray-700">Estado</span>
+                                <div className="mt-2">
+                                    <label className="inline-flex items-center">
+                                        <input type="radio" className="form-radio" name="estado" value="Disponible" id='0'
+                                            onClick={(e) => {
+                                                set_estado_add("Disponible")
+                                            }
+                                            }
                                         />
-                                        <span class ="ml-2">Disponible</span>
+                                        <span className="ml-2">Disponible</span>
                                     </label>
-                                    <label class="inline-flex items-center ml-6">
-                                        <input type="radio" class="form-radio" name="estado" value="Agotado" id='1'
-                                        onChange={(e) => {
-                                            set_estado_add("Agotado")
-                                        }
-                                        }
+                                    <label className="inline-flex items-center ml-6">
+                                        <input type="radio" className="form-radio" name="estado" value="Agotado" id='1'
+                                            onClick={(e) => {
+                                                set_estado_add("Agotado")
+
+                                            }
+                                            }
                                         />
-                                        <span class ="ml-2">Agotado</span>
+                                        <span className="ml-2">Agotado</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="mt-10">
-                        <BotonSecundario>Guardar
-                        </BotonSecundario></div>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={add_product_to_db}>
+                            Guardar
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
 
     )
 }
-
-
 
 
 export default AddProduct;
