@@ -96,6 +96,7 @@ const AddProduct = () => {
                                 <div className="mt-2">
                                     <label className="inline-flex items-center">
                                         <input type="radio" className="form-radio" name="estado" value="Disponible" id='0'
+                                        //Evento cambio de estado para el input
                                             onClick={(e) => {
                                                 set_estado_add("Disponible")
                                             }
@@ -105,6 +106,7 @@ const AddProduct = () => {
                                     </label>
                                     <label className="inline-flex items-center ml-6">
                                         <input type="radio" className="form-radio" name="estado" value="Agotado" id='1'
+                                        //Evento cambio de estado para el input
                                             onClick={(e) => {
                                                 set_estado_add("Agotado")
 
