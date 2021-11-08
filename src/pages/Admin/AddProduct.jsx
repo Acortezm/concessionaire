@@ -120,7 +120,8 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <div className="mt-10">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={add_product_to_db}>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" //Evento para agregar un producto a la DB
+                        onClick={add_product_to_db}>
                             Guardar
                         </button>
                     </div>
