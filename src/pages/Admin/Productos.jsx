@@ -199,14 +199,18 @@ const Productos = () => {
                                                     document.getElementById('codigo_update').defaultValue = value.codigo;
                                                     document.getElementById('nombre_update').defaultValue = value.nombre;
                                                     document.getElementById('precio_update').defaultValue = value.precio_unidad;
-                                                    if(document.getElementById('estado_disponible_update').value=='Disponible'){
+                                                    
+                                                    
+                                                    if(value.estado=='Disponible'){
                                                         document.getElementById('estado_disponible_update').checked = true;
                                                         document.getElementById('estado_agotado_update').checked = false;
                                                     } 
-                                                    if(document.getElementById('estado_agotado_update').value=='Agotado'){
+                                                    if(value.estado=='Agotado'){
                                                         document.getElementById('estado_disponible_update').checked = false;
                                                         document.getElementById('estado_agotado_update').checked = true;
                                                     }
+
+                                                    
                                                     
                                                 }
                                             }></i></button>
@@ -295,7 +299,7 @@ const Productos = () => {
                                         <input type="radio" className="form-radio" name="estado" value="Agotado" id='estado_agotado_update'
                                             //Evento cambio de estado para el input
                                             onClick={(e) => {
-                                                set_estado_update("Disponible")
+                                                set_estado_update("Agotado")
                                             }
                                             }
                                         />
