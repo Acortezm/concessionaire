@@ -14,7 +14,7 @@ const Productos = () => {
     const [precio_unidad_add, set_precio_unidad_add] = useState(0);
     const [estado_add, set_estado_add] = useState("Disponible");
 
-    //Funcion para agregar a la DB
+    //Funcion para agregar productos a la DB
     const add_product_to_db = () => {
 
         //1. Peticion POST a la DB
@@ -315,11 +315,6 @@ const Productos = () => {
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" //Evento para actualizar un producto en la DB
                             onClick={() => {update_product_to_db(id_update)}}>
                             Actualizar
-                            </button>
-                        </div>
-                        <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Cancelar
                             </button>
                         </div>
                     </div>

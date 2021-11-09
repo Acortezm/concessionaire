@@ -1,108 +1,438 @@
-import React from 'react'
-import BotonExtra from '../../componentes/botones/BotonExtra';
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import BotonExtra from '../../componentes/botones/BotonExtra';
+import Axios from 'axios'
 
 const VentasAdmin = () => {
-    const ventasBackend = [
-        {
-            productNombre : "corola",
-            productID: "totoyota",
-            cxNombre: "Laura",
-            cxID: "1234"
-        },
-        {
-            productNombre : "corola",
-            productID: "totoyota",
-            cxNombre: "Laura",
-            cxID: "1234"
-        },
-        {
-            productNombre : "corola",
-            productID: "totoyota",
-            cxNombre: "Laura",
-            cxID: "1234"
-        },
-        {
-            productNombre : "corola",
-            productID: "totoyota",
-            cxNombre: "Laura",
-            cxID: "1234"
-        },
-    ]
-    return (
-        <div className = 'absolute inset-y-0 right-32'> 
-            <div className="border-b pb-6 border-blue-400 ">
-                    <h1  className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Ventas            
-                    </h1></div>
+   
+    //Hooks para agregar producto en los inputs
+    const [codigo_venta_add, set_codigo_venta_add] = useState("");
+    const [id_cliente_add, set_id_cliente_add] = useState("");
+    const [nombre_cliente_add, set_nombre_cliente_add] = useState("");
+    const [codigo_producto_add, set_codigo_producto_add] = useState("");
+    const [nombre_producto_add, set_nombre_producto_add] = useState("");
+    const [cantidad_add, set_cantidad_add] = useState(0);
+    const [total_add, set_total_add] = useState(0);
 
-            <Link to= '/admin/addVentaAdmin'><div className="flex items-start justify-between mx-2 mt-16"> <BotonExtra> Agregar Venta</BotonExtra></div></Link>
+  //Funcion para agregar ventas a la DB
+  const add_ventas_to_db = () => {
 
-            <div className= "p-10">
-        <table>
-            <thead>
-                <tr>
-                    <th class="bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                        <div class="flex items-center justify-center">
-                            ID del Cliente
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
-                        </div>
-                    </th>
-                    <th class=" bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                        <div class="flex items-center justify-center">
-                            Cliente
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
-                        </div>
-                    </th>
-                    <th class= "bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                        <div class="flex items-center justify-center">
-                            Codigo del Producto
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
-                        </div>
-                    </th>
-                    <th class="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                        <div class="flex items-center justify-center">
-                            Nombre del Producto
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                            </svg>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>               
-
-                {ventasBackend.map((ventas) => {
-                    return(
-                        <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                        <td class="p-2 border-r">{ventas.cxID}</td>
-                        <td class="p-2 border-r">{ventas.cxNombre}</td>
-                        <td class="p-2 border-r">{ventas.productID}</td>
-                        <td class="p-2 border-r">{ventas.productNombre}</td>
-                        <td>
-                            <button className="bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
-        focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center"><i class="far fa-edit"></i></button>
-                        </td>
-                        <td>
-                            <button className="bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
-        focus:ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center" ><i class="far fa-trash-alt"></i></button>
-                        </td>
-                        
-                    </tr>)
-                })}
-                
-                
-                
-            </tbody>
-        </table>
-    </div>
-    </div>
-    )
+        
+    //1. Peticion POST a la DB
+    Axios.post('http://localhost:3001/api/v1/ventas/add', {
+        codigo_venta: codigo_venta_add,
+        id_cliente: id_cliente_add,
+        nombre_cliente: nombre_cliente_add,
+        codigo_producto: codigo_producto_add,
+        nombre_producto: nombre_producto_add,
+        cantidad: cantidad_add,
+        total: total_add
+    })
 }
+
+    //Hook para obtener la lista de las ventas desde la DB
+    const [ventas, set_ventas] = useState([])
+
+    useEffect(() => {
+        //2. Petición LIST a la DB
+        Axios.get('http://localhost:3001/api/v1/ventas/list').then((res) => {
+            set_ventas(res.data.ventas)
+        })
+
+    }, [])
+
+    const delete_ventas = (_id) => {
+        //3. Petición de DELETE a la DB
+        Axios.delete('http://localhost:3001/api/v1/ventas/delete/' + _id)
+    }
+
+    //Hooks para actualizar un producto en a la DB
+    const [id_update, set_id_update] = useState(0);
+    const [codigo_venta_update, set_codigo_venta_update] = useState("");
+    const [id_cliente_update, set_id_cliente_update] = useState("");
+    const [nombre_cliente_update, set_nombre_cliente_update] = useState("");
+    const [codigo_producto_update, set_codigo_producto_update] = useState("");
+    const [nombre_producto_update, set_nombre_producto_update] = useState("");
+    const [cantidad_update, set_cantidad_update] = useState(0);
+    const [total_update, set_total_update] = useState(0);
+
+    const update_ventas_to_db = (_id) => {
+
+        //4. Peticion UPDATE a la DB
+        Axios.put('http://localhost:3001/api/v1/ventas/update', {
+            codigo_venta: codigo_venta_update,
+            id_cliente: id_cliente_update,
+            nombre_cliente: nombre_cliente_update,
+            codigo_producto: codigo_producto_update,
+            nombre_producto: nombre_producto_update,
+            cantidad: cantidad_update,
+            total: total_update
+        })
+    }
+
+    return (
+
+        <div className='absolute inset-y-0 right-32'>
+            <div className="border-b pb-6 border-blue-400 mt-16">
+                <h1 className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-3xl font-bold text-gray-800">Administración de Ventas
+                </h1>
+            </div>
+            <div className="flex items-center justify-center">
+                <Link to="/Admin/AddVentaAdmin"> < BotonExtra > Agregar Venta </BotonExtra></Link>
+            </div>
+
+            <table className=' mt-10'>
+                <thead>
+                    <tr>
+                        <th className="bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                No.
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+
+                        <th className="bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Codigo de venta
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className=" bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                ID Cliente
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Nombre del cliente
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Codigo producto
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Nombre producto
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Cantidad
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Total
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Editar
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+                            </div>
+                        </th>
+                        <th className="bg-gray-50 border-b  p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <div className="flex items-center justify-center">
+                                Eliminar
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                                </svg>
+
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {ventas.map((value, key) => (
+
+                        <tr className="bg-white border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    {key}
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        required="required"
+                                        value={value.codigo_venta}
+                                        disabled='true'
+                                    ></input>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        required="required"
+                                        value={value.id_cliente}
+                                        disabled='true'
+                                    ></input>
+                                </div>
+                            </td>
+                            <div className="flex items-center justify-center">
+                                <input
+                                    type="text"
+                                    required="required"
+                                    value={value.nombre_cliente}
+                                    disabled='true'
+                                ></input>
+                            </div>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        value={value.codigo_producto}
+                                    ></input>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        required="required"
+                                        value={value.nombre_producto}
+                                        disabled='true'
+                                    ></input>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        required="required"
+                                        value={value.cantidad}
+                                        disabled='true'
+                                    ></input>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <input
+                                        type="text"
+                                        required="required"
+                                        value={value.total}
+                                        disabled='true'
+                                    ></input>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <button className="bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
+                focus: ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center"><i className="far fa-edit"
+                                            //Evento para editar una venta
+                                            onClick={
+                                                () => {
+                                                    set_id_update(value._id);
+                                                    set_codigo_venta_update(value.codigo_venta);
+                                                    set_id_cliente_update(value.id_cliente);
+                                                    set_nombre_cliente_update(value.nombre_cliente);
+                                                    set_codigo_producto_update(value.codigo_producto);
+                                                    set_nombre_producto_update(value.nombre_producto);
+                                                    set_cantidad_update(value.cantidad);
+                                                    set_total_update(value.total);
+                                                    
+
+                                                    document.getElementById('codigo_venta__update').defaultValue = value.codigo_venta;
+                                                    document.getElementById('id_cliente_update').defaultValue = value.id_cliente;
+                                                    document.getElementById('nombre_cliente_update').defaultValue = value.nombre_cliente;
+                                                    document.getElementById('codigo_producto_update').defaultValue = value.codigo_producto;
+                                                    document.getElementById('nombre_producto_update').defaultValue = value.nombre_producto;
+                                                    document.getElementById('cantidad_update').defaultValue = value.cantidad_unidad;
+                                                    document.getElementById('total_update').defaultValue = value.total_unidad;
+                                                                                                     
+                                                    
+                                                }
+                                            }></i></button>
+
+                                </div>
+                            </td>
+
+                            <td>
+                                <div className="flex items-center justify-center">
+                                    <button className="bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-1 
+                        focus: ring-gray-700 py-2 px-2 border rounded-lg border-gray-200 flex items-center w-8 font text-white justify-center"
+                                    //Evento para eliminar un producto
+                                    ><i className="far fa-trash-alt" onClick={() => delete_ventas(value._id)}></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    ))}
+                </tbody>
+            </table>
+
+            <div tabindex="0" aria-label="form" className="focus:outline-none w-full bg-white p-10">
+
+                <h5 className="flex items-center md:mt-0 mt-4" role="heading" aria-label="profile information" className="focus:outline-none text-2x1 font-bold text-gray-800">Actualizar venta</h5>
+
+                <form>
+                <div className="mt-4 md:flex items-center">
+                        <div className="flex flex-col">
+                            <label htmlfor="productNombre" className="mb-3 text-sm leading-none text-gray-800">Codigo de venta</label>
+                            <input
+                                id="codigo_venta_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="1234567"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_codigo_venta_update(e.target.value)
+                                }
+
+                                }
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 md:flex items-center">
+                    <div className="flex flex-col">
+                            <label htmlfor="productNombre" className="mb-3 text-sm leading-none text-gray-800">Nombre del cliente</label>
+                            <input
+                                id="nombre_cliente_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="Pepito Perez"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_nombre_cliente_update(e.target.value)
+                                }
+
+                                }
+                            />
+
+                        </div>
+                        <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
+                            <label htmlfor="productID" className="mb-3 text-sm leading-none text-gray-800">ID Cliente</label>
+                            <input
+                                id="id_cliente_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="1234567"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_id_cliente_update(e.target.value)
+                                }
+                                } />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 md:flex items-center">
+                    <div className="flex flex-col">
+                            <label htmlfor="productID" className="mb-3 text-sm leading-none text-gray-800">Codigo del producto</label>
+                            <input
+                                id="codigo_producto_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="1234567"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_codigo_producto_add(e.target.value)
+                                }
+                                } />
+                        </div>
+                        <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
+                            <label htmlfor="productNombre" className="mb-3 text-sm leading-none text-gray-800">Nombre del producto</label>
+                            <input
+                                id="nombre_producto_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="Hueso de goma"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_nombre_producto_update(e.target.value)
+                                }
+
+                                }
+                            />
+
+                        </div>
+                    </div>
+
+
+                    <div className="mt-4 md:flex items-center">
+                        <div className="flex flex-col">
+                            <label htmlfor="productID" className="mb-3 text-sm leading-none text-gray-800">Cantidad</label>
+                            <input
+                                id="cantidad_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="0"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_cantidad_update(e.target.value)
+                                }
+                                } />
+                        </div>
+
+                        <div className="flex flex-col md:ml-12 md:mt-0 mt-8">
+                            <label htmlfor="productID" className="mb-3 text-sm leading-none text-gray-800">Total</label>
+                            <input
+                                id="total_update"
+                                className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                                type="text"
+                                placeholder="0.00"
+                                required
+                                //Evento cambio de estado para el input
+                                onChange={(e) => {
+                                    set_total_update(e.target.value)
+                                }
+                                } />
+                        </div>
+                    </div>
+                    <div className="mt-4 md:flex items-center">
+                        <div className="flex flex-col">
+                            
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" //Evento para actualizar un producto en la DB
+                            onClick={() => {update_ventas_to_db(id_update)}}>
+                            Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    )
+};
+
+
 
 export default VentasAdmin;
