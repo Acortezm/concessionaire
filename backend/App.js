@@ -25,6 +25,8 @@ mongoose.connect(URI, option)
 //Importar las rutas
 const {product_routes} = require('./routes')
 app.use('/api/v1/product', product_routes);
+const {ventas_routes} = require('./routes')
+app.use('/api/v1/ventas', ventas_routes);
     
 //Poner el servidor a escuchar
 app.listen(process.env.PORT, () => {console.log("Servidor funcionando en el puerto: "+process.env.PORT)})

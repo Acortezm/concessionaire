@@ -4,7 +4,7 @@ const {ventas_model} = require('../models');
 getAllVentas = (req,res) => {
     ventas_model.find().exec((error,ventas) => {
         if(error) return res.status(500).json({error:true, mensaje: error});
-        res.status(200).json({getAllVentas});
+        res.status(200).json({ventas});
     });
 }
 
@@ -14,13 +14,13 @@ addVentas = (req,res) => {
 
     new_ventas.save((error, ventas) => {
         if(error) return res.status(500).json({error:true, mensaje: error})
-        res.status(200).json({mensaje: req.body.nombre + " agregado satisfactoriamente"});
+        res.status(200).json({mensaje: req.body.codigo_venta + " agregado satisfactoriamente"});
     });
 }
 
 //Debe ser funcion asincrona para que cumpla con la "promesa" de ir a la base de datos y eliminar el producto
 deleteVentas = async(req,res) => {
-    const product_ventas = await ventas_model.findByIdAndDelete({_id:req.params.id});
+    const ventas_delete = await ventas_model.findByIdAndDelete({_id:req.params.id});
 
     try{
         if(ventas_delete) return res.json({mensaje: ventas_delete.nombre + " eliminado correctamente"});
