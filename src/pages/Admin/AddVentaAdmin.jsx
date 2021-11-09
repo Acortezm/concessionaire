@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 
 
-const AddVentas = () => {
+const AddVentasAdmin = () => {
 
     //Hooks para agregar producto en los inputs
     const [codigo_venta_add, set_codigo_venta_add] = useState("");
@@ -19,7 +19,6 @@ const AddVentas = () => {
 
     //Funcion para agregar a la DB
     const add_ventas_to_db = () => {
-
         
         //1. Peticion POST a la DB
         Axios.post('http://localhost:3001/api/v1/ventas/add', {
@@ -182,4 +181,4 @@ const AddVentas = () => {
 }
 
 
-export default AddVentas;
+export default AddVentasAdmin;

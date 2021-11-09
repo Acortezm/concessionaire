@@ -46,7 +46,7 @@ const VentasAdmin = () => {
         Axios.delete('http://localhost:3001/api/v1/ventas/delete/' + _id)
     }
 
-    //Hooks para actualizar un producto en a la DB
+    //Hooks para actualizar una venta en la DB
     const [id_update, set_id_update] = useState(0);
     const [codigo_venta_update, set_codigo_venta_update] = useState("");
     const [id_cliente_update, set_id_cliente_update] = useState("");
@@ -57,9 +57,10 @@ const VentasAdmin = () => {
     const [total_update, set_total_update] = useState(0);
 
     const update_ventas_to_db = (_id) => {
-
+        console.log("Hola")
         //4. Peticion UPDATE a la DB
         Axios.put('http://localhost:3001/api/v1/ventas/update', {
+            _id: _id,
             codigo_venta: codigo_venta_update,
             id_cliente: id_cliente_update,
             nombre_cliente: nombre_cliente_update,
@@ -169,7 +170,6 @@ const VentasAdmin = () => {
                     </tr>
                 </thead>
                 <tbody>
-
                     {ventas.map((value, key) => (
 
                         <tr className="bg-white border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
@@ -261,13 +261,13 @@ const VentasAdmin = () => {
                                                     set_total_update(value.total);
                                                     
 
-                                                    document.getElementById('codigo_venta__update').defaultValue = value.codigo_venta;
+                                                    document.getElementById('codigo_venta_update').defaultValue = value.codigo_venta;
                                                     document.getElementById('id_cliente_update').defaultValue = value.id_cliente;
                                                     document.getElementById('nombre_cliente_update').defaultValue = value.nombre_cliente;
                                                     document.getElementById('codigo_producto_update').defaultValue = value.codigo_producto;
                                                     document.getElementById('nombre_producto_update').defaultValue = value.nombre_producto;
-                                                    document.getElementById('cantidad_update').defaultValue = value.cantidad_unidad;
-                                                    document.getElementById('total_update').defaultValue = value.total_unidad;
+                                                    document.getElementById('cantidad_update').defaultValue = value.cantidad;
+                                                    document.getElementById('total_update').defaultValue = value.total;
                                                                                                      
                                                     
                                                 }
@@ -304,7 +304,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="1234567"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_codigo_venta_update(e.target.value)
@@ -323,7 +322,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="Pepito Perez"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_nombre_cliente_update(e.target.value)
@@ -340,7 +338,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="1234567"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_id_cliente_update(e.target.value)
@@ -357,10 +354,9 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="1234567"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
-                                    set_codigo_producto_add(e.target.value)
+                                    set_codigo_producto_update(e.target.value)
                                 }
                                 } />
                         </div>
@@ -371,7 +367,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="Hueso de goma"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_nombre_producto_update(e.target.value)
@@ -392,7 +387,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="0"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_cantidad_update(e.target.value)
@@ -407,7 +401,6 @@ const VentasAdmin = () => {
                                 className="focus:outline-none focus:ring-2 focus:ring-indigo-400 w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                                 type="text"
                                 placeholder="0.00"
-                                required
                                 //Evento cambio de estado para el input
                                 onChange={(e) => {
                                     set_total_update(e.target.value)

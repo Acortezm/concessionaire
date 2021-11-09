@@ -43,7 +43,7 @@ const Productos = () => {
         Axios.delete('http://localhost:3001/api/v1/product/delete/' + _id)
     }
 
-    //Hooks para actualizar un producto en a la DB
+    //Hooks para actualizar un producto en la DB
     const [id_update, set_id_update] = useState(0);
     const [codigo_update, set_codigo_update] = useState("");
     const [nombre_update, set_nombre_update] = useState("");
