@@ -29,18 +29,6 @@ const ventas_schema = new mongoose.Schema({
         required: true,
         min:1
     },
-
-    cantidad: {
-        type: Number,
-        required: true,
-        min:1
-    },
-
-    total: {
-        type: Number,
-        required: true,
-        min:1
-    }
 });
 
 module.exports = mongoose.model('ventas', ventas_schema);

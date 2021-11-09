@@ -10,8 +10,6 @@ verifyTypes = (req, res, next) => {
         nombre_cliente: joi.string().required(),
         codigo_producto: joi.string().required(),
         nombre_producto: joi.string().required(),
-        cantidad: joi.number().required(),
-        total: joi.number().required()      
         });
 
         const {error} = ventas_joi.validate(req.body);
