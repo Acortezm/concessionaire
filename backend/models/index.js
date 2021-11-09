@@ -1,7 +1,7 @@
 const product_model = require('./product.model');
-const user_model = require('./user.model');
+const ventas_model = require('./ventas.model');
 
 module.exports = Object.freeze({
     product_model,
-    user_model
+    ventas_model
 })
