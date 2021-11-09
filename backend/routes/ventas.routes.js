@@ -10,7 +10,7 @@ router.get('/list', ventas_controller.getAllVentas);
 //2. Endpoint listar añadir productos con verificaciones de tipo y repetidos
 router.post('/add', ventas_middleware.verifyTypes,ventas_middleware.verifyCodigo, ventas_controller.addVentas);
 //3. Endpoint para actualizar productos
-router.put('/update', ventas_middleware.verifyTypes, ventas_controller.updateProduct);
+router.put('/update', ventas_middleware.verifyTypes, ventas_controller.updateVentas);
 //4. Endpoint eliminar productos
 router.delete('/delete/:id', ventas_controller.deleteVentas);
 
