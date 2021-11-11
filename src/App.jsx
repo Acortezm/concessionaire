@@ -32,7 +32,7 @@ function App() {
           <AdminLayout>
             <Switch>
               <Route path = '/admin/addproduct'><AddProduct/></Route>
-              <Route path = '/admin/gestionUser'><GestionUser/></Route>
+              <Route path = '/admin/GestionUser'><GestionUser/></Route>
               <Route path = '/admin/productos'><Productos/></Route>
               <Route path = '/admin/addVentaAdmin'> <AddVentaAdmin/> </Route>
               <Route path = '/admin/ventasAdmin'> <VentasAdmin/> </Route>

@@ -3,7 +3,7 @@ import React from "react";
 const Index = () =>{
     return (
         <div>
-            Contenido Landing Concesionario
+            Contenido Tienda de Mascotas
         </div>
     )
 }

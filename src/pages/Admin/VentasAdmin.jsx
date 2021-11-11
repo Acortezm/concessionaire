@@ -43,7 +43,7 @@ const VentasAdmin = () => {
     }
 
     //Hooks para actualizar una venta en la DB
-    const [id_update, set_id_update] = useState(0);
+    const [id_update,set_id_update] = useState(0);
     const [codigo_venta_update, set_codigo_venta_update] = useState("");
     const [id_cliente_update, set_id_cliente_update] = useState("");
     const [nombre_cliente_update, set_nombre_cliente_update] = useState("");
@@ -51,7 +51,7 @@ const VentasAdmin = () => {
     const [nombre_producto_update, set_nombre_producto_update] = useState("");
 
     const update_ventas_to_db = (_id) => {
-        console.log("Hola")
+
         //4. Peticion UPDATE a la DB
         Axios.put('http://localhost:3001/api/v1/ventas/update', {
             _id: _id,
@@ -74,7 +74,7 @@ const VentasAdmin = () => {
                 <Link to="/Admin/AddVentaAdmin"> < BotonExtra > Agregar Venta </BotonExtra></Link>
             </div>
 
-            <table className=' mt-10 table-fixed 16' >
+            <table className=' mt-10'>
                 <thead>
                     <tr>
                         <th className="bg-gray-50 border-b p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
