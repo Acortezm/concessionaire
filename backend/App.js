@@ -27,6 +27,8 @@ const {product_routes} = require('./routes')
 app.use('/api/v1/product', product_routes);
 const {ventas_routes} = require('./routes')
 app.use('/api/v1/ventas', ventas_routes);
+const {usuarios_routes} = require('./routes')
+app.use('/api/v1/usuarios', usuarios_routes);
     
 //Poner el servidor a escuchar
 app.listen(process.env.PORT, () => {console.log("Servidor funcionando en el puerto: "+process.env.PORT)})
