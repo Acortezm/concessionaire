@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start":"node server.js",
+    "start": "node server.js",
     "frontend": "cd frontend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently -n 'server,frontend' -c 'red,green'  \"nodemon server.js\" \"npm run frontend\"",
@@ -23,6 +23,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "tailwind": "^4.0.0"
   }
 }
