@@ -9,8 +9,8 @@ const cors = require('cors');
 app.use(cors());
 
 //Capturar el cuerpo de las peticiones que vienen del front end
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+//app.use(express.urlencoded({extended:false}));
+//app.use(express.json());
 
 //Configurar la conexion en el mongo atlas
 const mongoose = require('mongoose');
@@ -25,8 +25,6 @@ const mongoose = require('mongoose');
 //if(process.env.NODE_ENV==='production'){
 ///    app.use(express.static('frontend/build'));
 //}
-
-const app = express();
 const PORT = process.env.PORT || 8080; // Step 1
 
 // Step 2
