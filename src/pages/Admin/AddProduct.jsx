@@ -1,5 +1,4 @@
 import BotonExtra from '../../componentes/botones/BotonExtra';
-import BotonSecundario from '../../componentes/botones/BotonSecundario';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
 import Axios from 'axios'
@@ -16,6 +15,7 @@ const AddProduct = () => {
     //Funcion para agregar a la DB
     const add_product_to_db = () => {
 
+        console.log(codigo_add + nombre_add + precio_unidad_add + estado_add)
         //1. Peticion POST a la DB
         Axios.post('http://localhost:3001/api/v1/product/add', {
             codigo: codigo_add,

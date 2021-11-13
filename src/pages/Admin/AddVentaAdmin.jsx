@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import BotonExtra from '../../componentes/botones/BotonExtra';
-import BotonSecundario from '../../componentes/botones/BotonSecundario';
 import React, { useState } from 'react'
 import Axios from 'axios'
 
