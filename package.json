@@ -13,7 +13,7 @@
     "frontend": "cd frontend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently -n 'server,frontend' -c 'red,green'  \"nodemon server.js\" \"npm run frontend\"",
-    "build": "cd frontend && yarn start",
+    "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && yarn install",
     "heroku-postbuild": "npm run install-frontend && npm run build"
   },
