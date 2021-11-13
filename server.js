@@ -16,7 +16,7 @@ app.use(express.json());
 const mongoose = require('mongoose');
 //const URI = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.tazd8.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`
 //const option = {useNewUrlParser: true, useUnifiedTopology: true }; 
-mongoose.connect(URI, option)
+//mongoose.connect(URI, option)
 //.then(() => {
 //    console.log("Base de datos conectada")
 // })
@@ -30,7 +30,7 @@ const app = express();
 const PORT = process.env.PORT || 8080; // Step 1
 
 // Step 2
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myFirstDatabase', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ciclo3_2021', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -38,6 +38,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myFirstDatabase
 mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected!!!!');
 });
+
+// Data parsing
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
