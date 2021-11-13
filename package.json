@@ -1,11 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
+    "start":"node server.js",
+    "frontend": "cd frontend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon App",
+    "dev": "concurrently -n 'server,frontend' -c 'red,green'  \"nodemon server.js\" \"npm run frontend\"",
     "build": "cd frontend && yarn start",
     "install-frontend": "cd frontend && yarn install",
     "heroku-postbuild": "npm run install-frontend && npm run build"
@@ -15,6 +17,8 @@
   "description": "",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "axios": "^0.24.0",
+    "concurrently": "^6.4.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
