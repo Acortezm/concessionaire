@@ -17,7 +17,7 @@ const Login = () =>{
                 <img src={logo} alt= "logo" className = "rounded-lg h-96 w-96 flex items-center justify-center" />
                     
                 </div>
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mt-16y">
                 <Link to= '/admin'><BotonExtra>Administrador</BotonExtra></Link>
                 <Link to = '/vendedor'><BotonExtra>Vendedor</BotonExtra></Link></div>
             </div>
