@@ -7,9 +7,15 @@ import AddVentaAdmin from './pages/Admin/AddVentaAdmin';
 import VentasAdmin from './pages/Admin/VentasAdmin';
 import AddUser from './pages/Admin/AddUser';
 
+
+import Vendedor from './pages/Vendedor/Vendedor';
+import AddVenta from './pages/Vendedor/AddVenta';
+import Ventas from './pages/Vendedor/Ventas';
+
 import Login from './pages/Login/Login';
 
 import React from "react";
+import VendedorLayout from './layouts/VendedorLayout';
 import AdminLayout from './layouts/AdminLayout';
 import AuthLayout from './layouts/AuthLayout';
 import {
@@ -34,10 +40,23 @@ function App() {
               <Route path = '/admin/addVentaAdmin'> <AddVentaAdmin/> </Route>
               <Route path = '/admin/ventasAdmin'> <VentasAdmin/> </Route>
               <Route path = '/admin/addUser'> <AddUser/> </Route>
+              <Route path = '/vendedor'><Vendedor/></Route>
               <Route path = '/admin'><Admin/></Route>
             </Switch>
   
           </AdminLayout>
+        </Route>
+
+        <Route path = {['/vendedor', '/admin/addVenta', '/admin/ventas']}>
+          <VendedorLayout>
+            <Switch>
+              <Route path = '/vendedor/addVenta'> <AddVenta/> </Route>
+              <Route path = '/vendedor/ventas'> <Ventas/> </Route>
+              <Route path = '/vendedor'><Vendedor/></Route>
+              
+            </Switch>
+  
+          </VendedorLayout>
         </Route>
   
   

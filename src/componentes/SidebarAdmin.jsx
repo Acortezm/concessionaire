@@ -14,8 +14,6 @@ const LogoutButton = () => {
   )};
 
 const Sidebar = () =>{
-const {user} = useAuth0();
- if (user.roles == 'Administrador'){
     return (
         <nav className = 'xl:w-2/6 w-2/6 bg-gradient-to-tl from-blue-300 to-orange-300 h-screen flex items-center flex-col fixed'>
           <div><Perfile ></Perfile>
@@ -30,21 +28,7 @@ const {user} = useAuth0();
         focus:ring-gray-700 py-1.5 px-1.5 border rounded-lg border-gray-700 w-52 flex items-center justify-center">
           <LogoutButton></LogoutButton></div>
           
-        </nav>)} else {
-          return(<nav className = 'xl:w-2/6 w-2/6 bg-gradient-to-tl from-yellow-300 to-orange-300 h-screen flex items-center flex-col fixed'>
-          <div><Perfile ></Perfile>
-          <h2 className= "text-sm text-center text-gray-600 mt-5 font-bold " >PERFIL DE VENDEDOR</h2>
-          </div>
-          <Link to = '/Admin'><BotonPrincipal>Inicio</BotonPrincipal></Link>
-          <Link to = "/admin/ventasAdmin"><BotonPrincipal>Ventas</BotonPrincipal></Link>
-        
-          <div class="mt-16 bg-CNaranja text-white focus:outline-none focus:ring-2 focus:ring-offset-1 
-        focus:ring-gray-700 py-1.5 px-1.5 border rounded-lg border-gray-700 w-52 flex items-center justify-center">
-          <LogoutButton></LogoutButton></div>
-          
         </nav>)
-
-        }
     
 }
 
